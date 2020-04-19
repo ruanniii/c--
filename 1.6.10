@@ -1,0 +1,50 @@
+#include<bits/stdc++.h>
+using namespace std;
+int x[100000]={0}, y[100000]={0},z[100000]={0};
+int main()
+{
+	string s1;
+	string s2;
+	int n,m,k,h;
+	cin>>s1>>s2;
+	//輸入
+	n=s1.size();
+	m=s2.size();
+	//統計長度
+	for(int i=0;i<=n-1;i++)
+	{
+		x[i]=s1[n-i-1]-48;
+		//cout<<x[i]<<" ";
+	}
+	for(int i=0;i<=m-1;i++)
+	{
+		y[i]=s2[m-i-1]-48;
+		//cout<<y[i]<<" ";
+	}
+	//字符轉數字
+	k=max(m,n);
+	//K取最高位
+	for(int i=0;i<=k;i++)
+	{
+		if(x[i]+y[i]<10)
+		{
+			z[i]+=x[i]+y[i];
+		}
+		else
+		{
+			z[i]+=(x[i]+y[i])-10;
+			z[i+1]++;
+		}
+	}
+	h=k;//臨時變量儲存K
+	//cout<<h<<endl;//測試
+	if(z[h]==0&&h>=1)//判斷
+	{
+		h--;
+		k=h;
+	}
+	for(int i=k;i>=0;i--)
+		cout<<z[i];
+	cout<<endl;
+	return 0;
+}
